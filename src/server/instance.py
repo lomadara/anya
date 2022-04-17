@@ -26,18 +26,19 @@ class Server(object):
         
         self.api.init_app(self.blueprint)
         
-        self.health_check = self.health_check()
+        #self.health_check = self.health_check()
         
         self.app.register_blueprint(self.blueprint)
         
         CORS(self.app)
         
-    def health_check(self):
-        return self.api.namespace(
-            name='Health Check',
-            description='Endpoint to check if is application is alive',
-            path='/health'
-        )
+    # example of namespace creation    
+    # def health_check(self):
+    #     return self.api.namespace(
+    #         name='Health Check',
+    #         description='Endpoint to check if is application is alive',
+    #         path='/health'
+    #     )
     
     def run(self):
         self.app.run(
